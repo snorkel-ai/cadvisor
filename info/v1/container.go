@@ -27,7 +27,9 @@ type CpuSpec struct {
 	Period   uint64 `json:"period,omitempty"`
 }
 
+// TODO limit already here?
 type MemorySpec struct {
+	// TODO THIS!!
 	// The amount of memory requested. Default is unlimited (-1).
 	// Units: bytes.
 	Limit uint64 `json:"limit,omitempty"`
