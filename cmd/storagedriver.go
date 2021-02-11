@@ -45,7 +45,7 @@ func NewMemoryStorage() (*memory.InMemoryCache, error) {
 		if driver == "" {
 			continue
 		}
-		storage, err := storage.New(driver)
+		storage, err := storage.New(driver) // how does this actually initialize influxdb
 		if err != nil {
 			return nil, err
 		}

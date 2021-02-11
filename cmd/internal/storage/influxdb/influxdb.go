@@ -60,6 +60,8 @@ const (
 	serMemoryUsage string = "memory_usage"
 	// Maximum memory usage recorded
 	serMemoryMaxUsage string = "memory_max_usage"
+	// Maximum memory usage recorded
+	serMemoryLimit string = "memory_limit"
 	// //Number of bytes of page cache memory
 	serMemoryCache string = "memory_cache"
 	// Size of RSS
@@ -246,6 +248,8 @@ func (s *influxdbStorage) memoryStatsToPoints(
 	points = append(points, makePoint(serMemoryUsage, stats.Memory.Usage))
 	// Maximum memory usage recorded
 	points = append(points, makePoint(serMemoryMaxUsage, stats.Memory.MaxUsage))
+	// memory limit
+	points = append(points, makePoint(serMemoryLimit, stats.Memory.Limit))
 	//Number of bytes of page cache memory
 	points = append(points, makePoint(serMemoryCache, stats.Memory.Cache))
 	// Size of RSS
