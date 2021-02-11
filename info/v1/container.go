@@ -375,7 +375,7 @@ type MemoryStats struct {
 	// TODO: where to use this?
 	// Memory Limit.
 	// Units: Bytes.
-	Limit uint64 `json:"max_usage"`
+	Limit uint64 `json:"limit"`
 
 	// Number of bytes of page cache memory.
 	// Units: Bytes.

@@ -161,6 +161,7 @@ func main() {
 
 	setMaxProcs()
 
+	// this is main function, where storage driver is initialized, I guess the flag is implicit in storagedriver.go?
 	memoryStorage, err := NewMemoryStorage()
 	if err != nil {
 		klog.Fatalf("Failed to initialize storage driver: %s", err)
