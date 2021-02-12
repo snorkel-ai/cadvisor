@@ -834,7 +834,10 @@ func setMemoryStats(s *cgroups.Stats, ret *info.ContainerStats) {
 	ret.Memory.Usage = s.MemoryStats.Usage.Usage
 	ret.Memory.MaxUsage = s.MemoryStats.Usage.MaxUsage
 	ret.Memory.Failcnt = s.MemoryStats.Usage.Failcnt
-	ret.Memory.Limit = s.MemoryStats.Stats["limit_in_bytes"] // TODO!!
+	ret.Memory.Limit = s.MemoryStats.Usage.Limit
+	// ret.Memory.Limit = s.MemoryStats.Stats["hierarchical_memory_limit"] // TODO!!
+
+	// PRINT?
 
 	if s.MemoryStats.UseHierarchy {
 		ret.Memory.Cache = s.MemoryStats.Stats["total_cache"]

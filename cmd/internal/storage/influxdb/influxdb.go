@@ -260,7 +260,7 @@ func (s *influxdbStorage) memoryStatsToPoints(
 	// Maximum memory usage recorded
 	points = append(points, makePoint(serMemoryMaxUsage, stats.Memory.MaxUsage))
 	// memory limit
-	points = append(points, makePoint(serMemoryLimit, cInfo.Spec.Memory.Limit))
+	points = append(points, makePoint(serMemoryLimit, stats.Memory.Limit))
 	//Number of bytes of page cache memory
 	points = append(points, makePoint(serMemoryCache, stats.Memory.Cache))
 	// Size of RSS
