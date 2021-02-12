@@ -27,9 +27,7 @@ type CpuSpec struct {
 	Period   uint64 `json:"period,omitempty"`
 }
 
-// TODO limit already here?
 type MemorySpec struct {
-	// TODO THIS!!
 	// The amount of memory requested. Default is unlimited (-1).
 	// Units: bytes.
 	Limit uint64 `json:"limit,omitempty"`
@@ -374,7 +372,6 @@ type MemoryStats struct {
 	// Units: Bytes.
 	MaxUsage uint64 `json:"max_usage"`
 
-	// TODO: where to use this?
 	// Memory Limit.
 	// Units: Bytes.
 	Limit uint64 `json:"limit"`
@@ -933,7 +930,7 @@ type ProcessStats struct {
 	Ulimits []UlimitSpec `json:"ulimits,omitempty"`
 }
 
-type ContainerStats struct { // container stats?
+type ContainerStats struct {
 	// The time of this stat point.
 	Timestamp time.Time               `json:"timestamp"`
 	Cpu       CpuStats                `json:"cpu,omitempty"`

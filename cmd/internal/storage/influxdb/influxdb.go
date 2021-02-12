@@ -65,7 +65,7 @@ const (
 	// //Number of bytes of page cache memory
 	serMemoryCache string = "memory_cache"
 	// Size of RSS
-	serMemoryRss string = "memory_rss" // look here
+	serMemoryRss string = "memory_rss"
 	// Container swap usage
 	serMemorySwap string = "memory_swap"
 	// Size of memory mapped files in bytes
@@ -197,7 +197,6 @@ func (s *influxdbStorage) tagPoints(cInfo *info.ContainerInfo, stats *info.Conta
 		// merge with existing tags if any
 		addTagsToPoint(points[i], commonTags)
 		addTagsToPoint(points[i], cInfo.Spec.Labels)
-		// addTagsToPoint(points[i], cInfo.Spec.Memory.Limit) // THIS??
 		points[i].Time = stats.Timestamp
 	}
 }
@@ -240,16 +239,6 @@ func (s *influxdbStorage) containerStatsToPoints(
 
 	return points
 }
-
-// func (s *influxdbStorage) memoryStatsToPoints(
-// 	cInfo *info.ContainerInfo,
-// 	stats *info.ContainerStats,
-// ) (points []*influxdb.Point) {
-// 	// Memory Limit
-// 	points = append(points, makePoint(serMemoryLimit, stats.Memory.Usage))
-
-// 	return points
-// }
 
 func (s *influxdbStorage) memoryStatsToPoints(
 	cInfo *info.ContainerInfo,
@@ -410,7 +399,6 @@ func (s *influxdbStorage) AddStats(cInfo *info.ContainerInfo, stats *info.Contai
 
 		s.points = append(s.points, s.containerStatsToPoints(cInfo, stats)...)
 		s.points = append(s.points, s.memoryStatsToPoints(cInfo, stats)...)
-		// s.points = append(s.points, s.memorySpecsToPoints(cInfo, stats)...)
 		s.points = append(s.points, s.hugetlbStatsToPoints(cInfo, stats)...)
 		s.points = append(s.points, s.perfStatsToPoints(cInfo, stats)...)
 		s.points = append(s.points, s.resctrlStatsToPoints(cInfo, stats)...)
