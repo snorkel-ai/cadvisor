@@ -45,7 +45,7 @@ import (
 	"k8s.io/klog/v2"
 )
 
-var argIp = flag.String("listen_ip", "", "TEST TESTER IP to listen on, defaults to all IPs")
+var argIp = flag.String("listen_ip", "", "IP to listen on, defaults to all IPs")
 var argPort = flag.Int("port", 8080, "port to listen")
 var maxProcs = flag.Int("max_procs", 0, "max number of CPUs that can be used simultaneously. Less than 1 for default (number of cores).")
 
